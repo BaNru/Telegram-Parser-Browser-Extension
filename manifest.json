@@ -1,0 +1,38 @@
+{
+	"name": "Parser TG",
+	"description": "",
+	"version": "1",
+
+	"manifest_version": 3,
+
+	"permissions": [
+		"tabs",
+		"storage",
+		"unlimitedStorage"
+	],
+	"host_permissions": [
+		"*://*.telegram.org/*"
+	],
+
+	"action" : {
+		"default_title": "TG Parser",
+		"default_icon" : {
+			"19": "images/icons/19.png",
+			"38": "images/icons/38.png"
+		}
+	},
+	"icons": {
+		"16" : "images/icons/16.png",
+		"64" : "images/icons/64.png"
+	},
+	"background" : {
+        "service_worker": "js/background.js"
+    },
+	"content_scripts":[{
+		"run_at"	: "document_idle",
+		"matches"	: [
+			"*://*.telegram.org/*"
+		],
+		"js"		: ["/js/content.js"]
+	}]
+}
